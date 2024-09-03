@@ -1,0 +1,32 @@
+.tree-node {
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+}
+
+.tree-node .content {
+  background-color: #d9d9d9;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 2px;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tree-node .content::before {
+  /* background-color: #000000; */
+  border-bottom: 1px solid #000000;
+  border-left: 1px solid #000000;
+  content: '';
+  display: block;
+  height: calc(100% + 1px);
+  position: absolute;
+  right: 100%;
+  top: 0;
+  transform: translate(0, -50%);
+  width: 16px;
+}
+
+.tree-node--active > .action-wrapper > .content::before {
+  border-color: hotpink;
+}

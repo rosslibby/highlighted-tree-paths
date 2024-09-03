@@ -1,0 +1,24 @@
+.tree {
+  --highlight-height: 0%;
+  --line-height: 100%;
+  list-style: none;
+  padding-left: 16px;
+  position: relative;
+}
+
+.tree::before {
+  background: linear-gradient(
+    180deg,
+    hotpink var(--highlight-height),
+    black var(--highlight-height),
+    black var(--line-height),
+    transparent var(--line-height)
+  );
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: -16px;
+  width: 1px;
+  z-index: 2;
+}

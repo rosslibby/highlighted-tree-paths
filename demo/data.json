@@ -1,0 +1,61 @@
+[
+  {
+    "label": "Alpha"
+  },
+  {
+    "label": "Bravo"
+  },
+  {
+    "label": "Charlie",
+    "nodes": [
+      {
+        "label": "Foxtrot"
+      },
+      {
+        "label": "Golf"
+      },
+      {
+        "label": "Hotel",
+        "nodes": [
+          {
+            "label": "Juliette"
+          },
+          {
+            "label": "Kilo",
+            "nodes": [
+              {
+                "label": "November"
+              },
+              {
+                "label": "Oscar"
+              }
+            ]
+          },
+          {
+            "label": "Lima"
+          },
+          {
+            "label": "Mike",
+            "nodes": [
+              {
+                "label": "Papa"
+              },
+              {
+                "label": "Quebec"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "India"
+      }
+    ]
+  },
+  {
+    "label": "Delta"
+  },
+  {
+    "label": "Echo"
+  }
+]

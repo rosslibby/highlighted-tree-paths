@@ -1,0 +1,5 @@
+.action-wrapper {
+  position: relative;
+  width: fit-content;
+  z-index: 2;
+}
