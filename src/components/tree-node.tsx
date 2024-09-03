@@ -1,19 +1,30 @@
+'use client'
 import { TreeNode } from '../types'
-import Tree from './tree'
+import { Tree } from './tree'
 import { useTree } from '../context'
 import ActionWrapper from './action-wrapper'
-import './tree-node.css'
+import {
+  treeNodeContentStyles,
+  treeNodeActiveStyles,
+  treeNodeContentBeforeStyles,
+  treeNodeStyles,
+} from './styles'
 
 export default function Node({ node }: { node: TreeNode }) {
   const { nodeProps } = useTree()
-  const classname = [
-    'tree-node', ...(node.active ? ['tree-node--active'] : []),
-  ].join(' ')
+  const styles = {
+    ...treeNodeStyles,
+    ...(node.active ? treeNodeActiveStyles : {}),
+    ...nodeProps.styles,
+  }
 
   return (
-    <li className={classname} style={nodeProps.styles}>
+    <li style={styles}>
       <ActionWrapper node={node}>
-        <div className="content">{node.label}</div>
+        <div style={treeNodeContentStyles}>
+          <div style={treeNodeContentBeforeStyles} />
+          {node.label}
+        </div>
       </ActionWrapper>
       {node.nodes.length > 0 && (
         <Tree nodes={node.nodes} />

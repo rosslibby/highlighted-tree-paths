@@ -1,3 +1,4 @@
+'use client'
 import { useCallback, useContext } from 'react'
 import { IngestedTreeNode, TreeNode, TreeNodeProps } from '../../types'
 import { treeState } from '..'

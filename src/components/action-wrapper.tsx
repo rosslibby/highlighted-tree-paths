@@ -6,7 +6,7 @@ import {
 } from 'react'
 import { TreeNode } from '../types'
 import { useTree } from '../context'
-import './action-wrapper.css'
+import { actionWrapperStyles } from './styles'
 
 export default function ActionWrapper({ children, node }: {
   children: ReactElement | ReactElement[]
@@ -22,7 +22,7 @@ export default function ActionWrapper({ children, node }: {
   )
 
   return (
-    <div className="action-wrapper" ref={actionRef}>
+    <div style={actionWrapperStyles} ref={actionRef}>
       {childrenWithProps}
     </div>
   )

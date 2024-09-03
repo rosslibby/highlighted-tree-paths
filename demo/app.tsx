@@ -1,6 +1,6 @@
 import { ReactElement, useContext, useEffect } from 'react'
 import { useTree } from '../src/context/hooks'
-import Tree from '../src/components/tree'
+import { Tree } from '../src/components'
 import { treeState } from '../src/context'
 import treeData from './data.json'
 import { IngestedTreeNode } from '../src/types'
