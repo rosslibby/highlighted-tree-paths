@@ -13,10 +13,10 @@ export const treeStyles: CSSProperties = {
 export const treeLineStyles: CSSProperties = {
   background: 'linear-gradient(180deg, var(--highlight-color) var(--highlight-height), var(--default-color) var(--highlight-height), var(--default-color) var(--line-height), transparent var(--line-height))',
   content: '',
-  height: '100%',
+  height: 'calc(100% - 1px)',
   left: '0',
   position: 'absolute',
-  top: '-16px',
+  top: '-17px',
   width: '1px',
   zIndex: 2,
 } as CSSProperties
@@ -45,7 +45,7 @@ export const treeNodeContentBeforeStyles: CSSProperties = {
   display: 'block',
   height: 'calc(100% + 1px)',
   position: 'absolute',
-  right: 'calc(100% + 1px)',
+  right: '100%',
   top: '0',
   transform: 'translate(0, -50%)',
   width: '16px',
