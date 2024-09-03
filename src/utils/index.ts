@@ -98,11 +98,17 @@ export function mapActiveNodes(
 
     if (!idMatch && !subtreeContainsNode) return node
 
+    // if isActive === false, make sure that only the active
+    // node is toggled off, not the entire subtree
+
+    // IF NOT idMatch AND NOT isActive, return node.active
+    // IF NOT idMatch AND isActive, return isActive
+
     return {
       ...node,
       active: idMatch
         ? !node.active
-        : hasActiveDescendent ? node.active : isActive,
+        : !isActive ? node.active : isActive,
       nodes: idMatch
         ? deactivateDescendents(node.nodes)
         : mapActiveNodes(id, node.nodes, isActive),
