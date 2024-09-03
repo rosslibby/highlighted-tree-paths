@@ -71,11 +71,18 @@ export const toggleNodes = (
   return mapActiveNodes(id, nodes, isActive)
 }
 
+export function deactivateDescendents(nodes: TreeNode[]): TreeNode[] {
+  return nodes.map((node: TreeNode) => ({
+    ...node,
+    active: false,
+    nodes: deactivateDescendents(node.nodes),
+  }))
+}
+
 export function mapActiveNodes(
   id: string | number,
   nodes: TreeNode[],
   isActive: boolean,
-  found: boolean = false,
 ): TreeNode[] {
   const containsNode = treeContainsNodeById(id, nodes)
 
@@ -93,19 +100,16 @@ export function mapActiveNodes(
     //     active: isActive === false ? false : node.active,
     //     nodes: mapActiveNodes(id, node.nodes, isActive, found),
     //   }
-    if (!idMatch && !subtreeContainsNode && !found) return node
-    else if (idMatch && !subtreeContainsNode) return {
-      ...node,
-      active: isActive,
-      nodes: mapActiveNodes(id, node.nodes, isActive, true),
-    }
+    if (!idMatch && !subtreeContainsNode) return node
 
     return {
       ...node,
       active: idMatch
         ? !node.active
         : hasActiveDescendent ? node.active : isActive,
-      nodes: mapActiveNodes(id, node.nodes, isActive),
+      nodes: idMatch
+        ? deactivateDescendents(node.nodes)
+        : mapActiveNodes(id, node.nodes, isActive),
     }
   })
 }

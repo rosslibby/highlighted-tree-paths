@@ -13,6 +13,10 @@
   z-index: 1;
 }
 
+.tree-node .content:hover {
+  cursor: pointer;
+}
+
 .tree-node .content::before {
   /* background-color: #000000; */
   border-bottom: 1px solid #000000;
