@@ -92,14 +92,10 @@ export function mapActiveNodes(
     const idMatch = node.id === id
     const flattened = flattenNodes(node.nodes)
     const subtreeContainsNode = treeContainsNodeById(id, node.nodes)
-    const hasActiveDescendent = flattened.some((node) => node.id !== id && node.active)
+    const hasActiveDescendent = flattened.some(
+      (node) => node.id !== id && node.active
+    )
 
-    // if (found && !idMatch) {
-    //   return {
-    //     ...node,
-    //     active: isActive === false ? false : node.active,
-    //     nodes: mapActiveNodes(id, node.nodes, isActive, found),
-    //   }
     if (!idMatch && !subtreeContainsNode) return node
 
     return {

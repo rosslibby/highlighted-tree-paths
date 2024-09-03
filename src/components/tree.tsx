@@ -4,7 +4,6 @@ import { CSSProperties } from 'react'
 import { TreeNode } from '../types';
 import {
   flattenNodes,
-  furthestActiveDescendent,
   getSubtreeHeight,
   lastActiveSubtreeNode,
 } from '../utils';
@@ -15,15 +14,10 @@ export default function Tree({ topLevel, nodes }: {
   topLevel?: boolean,
   nodes: TreeNode[],
 }) {
-  const hasActiveDescendent = furthestActiveDescendent(nodes) > -1
-  const { id: lastActiveId, index: lastActiveIndex }
-    = lastActiveSubtreeNode(nodes)
+  const { id: lastActiveId } = lastActiveSubtreeNode(nodes)
   const flattenedNodes = flattenNodes(nodes)
   const activeIndex = flattenedNodes.findIndex(
     (node) => node.id === lastActiveId
-  )
-  const fIndex = flattenedNodes.findIndex(
-    (_, index) => index === activeIndex
   )
   const flattenedIndex = activeIndex > -1
     ? flattenedNodes.findIndex((_, index) => index === activeIndex)
