@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid'
 import { IngestedTreeNode, TreeNode } from '../types'
 
 export function ingestNodes(nodes: IngestedTreeNode[]): TreeNode[] {
-  return nodes.map((node: IngestedTreeNode, index: number): TreeNode => ({
+  return nodes.map((node: IngestedTreeNode): TreeNode => ({
     ...node,
     id: node.id ?? uuid(),
     active: false,
@@ -90,16 +90,9 @@ export function mapActiveNodes(
 
   return nodes.map((node: TreeNode) => {
     const idMatch = node.id === id
-    const flattened = flattenNodes(node.nodes)
     const subtreeContainsNode = treeContainsNodeById(id, node.nodes)
-    const hasActiveDescendent = flattened.some(
-      (node) => node.id !== id && node.active
-    )
 
     if (!idMatch && !subtreeContainsNode) return node
-
-    // if isActive === false, make sure that only the active
-    // node is toggled off, not the entire subtree
 
     // IF NOT idMatch AND NOT isActive, return node.active
     // IF NOT idMatch AND isActive, return isActive
